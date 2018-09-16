@@ -1,7 +1,10 @@
 package com.codecool.expertsystem.model.parsers;
 
 import com.codecool.expertsystem.model.containers.FactRepository;
+import com.codecool.expertsystem.model.containers.Fact;
+import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
+import org.w3c.dom.Node;
 
 public class FactParser extends XMLParser {
     private FactRepository factRepository;
@@ -9,6 +12,7 @@ public class FactParser extends XMLParser {
 
     public FactParser(String xmlPath) {
         this.factRepository = new FactRepository();
+        this.nodeList = document.getElementsByTagName("Fact");
         loadXmlDocument(xmlPath);        
         addFactsToRepository();
     }
@@ -17,7 +21,7 @@ public class FactParser extends XMLParser {
         return this.factRepository;
     }
 
-    private void addRulesToRepository() {
+    private void addFactsToRepository() {
 
         for (int count = 0; count < nodeList.getLength(); count++) {
             Node tempNode = nodeList.item(count);
@@ -26,41 +30,29 @@ public class FactParser extends XMLParser {
                 Element tempElement = (Element) tempNode;
 
                 String id = tempElement.getAttribute("id");
-                String questionContent = tempElement.getElementsByTagName("Question")
+                String description = tempElement.getElementsByTagName("Description")
                                                     .item(0).getTextContent();
-                Answer answer = getAnswers(tempElement);
 
-                Question newQuestion = new Question(id, questionContent, answer);
-                this.ruleRepository.addQuestion(newQuestion);
+                Fact fact = new Fact(id, description);
+                setFactEvaluations(fact, tempElement);
+                
+                this.factRepository.addFact(fact);
             }
         }
     }
 
-    private Answer getAnswers(Element tempElement) {
-        Answer answer = new Answer();
-        NodeList answersList = tempElement.getElementsByTagName("Selection");
+    private void setFactEvaluations(Fact fact, Element tempElement) {
+        Element evaluationNode = (Element) tempElement.getElementsByTagName("Evals")
+                                                      .item(0);
+        NodeList evaluations = evaluationNode.getElementsByTagName("Eval");
 
-        for (int count = 0; count < answersList.getLength(); count++) {
-            Node answerNode = answersList.item(count);
+        for (int count = 0; count < evaluations.getLength(); count++) {
 
-            if (answerNode.getNodeType() == Node.ELEMENT_NODE) {
-                Element answerElement = (Element) answerNode;
-                Element valueNode = (Element) answerNode.getChildNodes().item(1);
-
-                boolean answerType = Boolean.valueOf(answerElement.getAttribute("value"));                
-                Value value;
-                
-                if (valueNode.getNodeName().equals("SingleValue")) {
-                    String param = valueNode.getAttribute("value");
-                    value = new SingleValue(param, answerType);    
-                } else {
-                    List<String> params = Arrays.asList(valueNode.getAttribute("value").split(","));
-                    value = new MultipleValue(params, answerType);
-                }
-                answer.addValue(value);
-            }
+            Element evaluation = (Element) evaluations.item(count);
+            String id = evaluation.getAttribute("id");
+            String value = evaluation.getTextContent();
+            fact.setFactValueById(id, Boolean.valueOf(value));
         }
-        return answer;
     }
 
 }
