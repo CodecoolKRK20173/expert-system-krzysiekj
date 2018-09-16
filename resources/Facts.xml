@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Facts>
+    <Fact id="koskowa">
+        <Description value="Bienkowka-Koskowa Gora-Bienkowka"/>
+        <Evals>
+            <Eval id="experience">false</Eval>
+            <Eval id="season">false</Eval>
+            <Eval id="transport">true</Eval>
+            <Eval id="family">true</Eval>
+            <Eval id="dog">true</Eval>
+            <Eval id="money">true</Eval>
+        </Evals>
+    </Fact>
+    <Fact id="chelm">
+        <Description value="Myslenice-Chelm-Uklejna-Myslenice"/>
+        <Evals>
+            <Eval id="experience">false</Eval>
+            <Eval id="season">false</Eval>
+            <Eval id="transport">false</Eval>
+            <Eval id="family">true</Eval>
+            <Eval id="dog">true</Eval>
+            <Eval id="money">true</Eval>
+        </Evals>
+    </Fact>
+    <Fact id="maciejowa">
+        <Description value="Rabka-Maciejowa-Rabka"/>
+        <Evals>
+            <Eval id="experience">false</Eval>
+            <Eval id="season">false</Eval>
+            <Eval id="transport">false</Eval>
+            <Eval id="family">true</Eval>
+            <Eval id="dog">true</Eval>
+            <Eval id="money">true</Eval>
+        </Evals>
+    </Fact>
+    <Fact id="turbacz">
+        <Description value="Rabka-Maciejowa-Turbacz-Nowy Targ"/>
+        <Evals>
+            <Eval id="experience">true</Eval>
+            <Eval id="season">true</Eval>
+            <Eval id="transport">false</Eval>
+            <Eval id="family">false</Eval>
+            <Eval id="dog">true</Eval>
+            <Eval id="money">false</Eval>
+        </Evals>
+    </Fact>
+    <Fact id="lubon">
+        <Description value="Rabka Zaryte-Lubon Wielki-Rabka Zaryte"/>
+        <Evals>
+            <Eval id="experience">false</Eval>
+            <Eval id="season">true</Eval>
+            <Eval id="transport">true</Eval>
+            <Eval id="family">false</Eval>
+            <Eval id="dog">true</Eval>
+            <Eval id="money">false</Eval>
+        </Evals>
+    </Fact>
+    <Fact id="trzykorony">
+        <Description value="Sromowce-Trzy Korony-Kroscienko"/>
+        <Evals>
+            <Eval id="experience">false</Eval>
+            <Eval id="season">false</Eval>
+            <Eval id="transport">false</Eval>
+            <Eval id="family">true</Eval>
+            <Eval id="dog">true</Eval>
+            <Eval id="money">false</Eval>
+        </Evals>
+    </Fact>
+    <Fact id="babia">
+        <Description value="Krowiarki-Babia Gora-Krowiarki"/>
+        <Evals>
+            <Eval id="experience">true</Eval>
+            <Eval id="season">true</Eval>
+            <Eval id="transport">true</Eval>
+            <Eval id="family">false</Eval>
+            <Eval id="dog">false</Eval>
+            <Eval id="money">false</Eval>
+        </Evals>
+    </Fact>
+    <Fact id="czerwone">
+        <Description value="Kiry-Czerwone Wierchy-Kuznice"/>
+        <Evals>
+            <Eval id="experience">true</Eval>
+            <Eval id="season">true</Eval>
+            <Eval id="transport">false</Eval>
+            <Eval id="family">false</Eval>
+            <Eval id="dog">false</Eval>
+            <Eval id="money">false</Eval>
+        </Evals>
+    </Fact>
+    <Fact id="orla">
+        <Description value="Kuznice-Orla Perc-Kuznice"/>
+        <Evals>
+            <Eval id="experience">true</Eval>
+            <Eval id="season">true</Eval>
+            <Eval id="transport">false</Eval>
+            <Eval id="family">false</Eval>
+            <Eval id="dog">false</Eval>
+            <Eval id="money">false</Eval>
+        </Evals>
+    </Fact>
+</Facts>
