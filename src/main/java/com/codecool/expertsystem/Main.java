@@ -9,9 +9,9 @@ public class Main {
 
     public static void main(String[] args) {
         View view = new View();
-        ESProvider esProvider = new ESProvider(FactParser, RuleParser);
+        ESProvider esProvider = new ESProvider(factParser, ruleParser);
 
-        
+        view.printWelcome();
         
     }
 
