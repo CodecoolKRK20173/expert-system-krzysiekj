@@ -8,6 +8,20 @@ public class FactRepository {
 
     }
 
+    private class FactIterator implements Iterator<Fact> {
+
+        @Override
+        public boolean hasNext() {
+    
+        }
+    
+        @Override
+        public Fact next() {
+    
+        }
+    
+    }
+
     public Iterator<Fact> getIterator() {
 
     }
