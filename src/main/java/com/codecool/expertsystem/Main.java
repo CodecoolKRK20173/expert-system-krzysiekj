@@ -15,7 +15,14 @@ public class Main {
             new FactParser(FACTSLINK), new RuleParser(RULESLINK));
 
         view.printWelcome();
-        
+        esProvider.collectAnswers();
+        String result = esProvider.evaluate();
+
+        if (result.equals("")) {
+            result = "Answer couldn't be found by the expert system"
+                    + "maybe it needs more rules, or facts");
+        }
+        view.printResult(result);
     }
 
 }

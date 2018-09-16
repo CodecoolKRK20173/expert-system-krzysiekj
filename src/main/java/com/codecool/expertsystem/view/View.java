@@ -8,4 +8,8 @@ public class View {
                 + "Ok, let me ask you some questions");
     }
 
+    public void printResult(String result) {
+        System.out.println("If I can suggest i'd make this trail: " + result);
+    }
+
 }
