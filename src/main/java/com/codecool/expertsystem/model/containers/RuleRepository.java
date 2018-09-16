@@ -15,7 +15,7 @@ public class RuleRepository {
 
     public void addQuestion(Question question) {
         this.questions.add(question);
-    }    
+    }
 
     private class QuestionIterator implements Iterator<Question> {
         int index;
@@ -28,12 +28,11 @@ public class RuleRepository {
         @Override
         public Question next() {
             if (this.hasNext()) {
-                return questions.get(index++)
+                return questions.get(index++);
             } else {
                 return null;
             }
         }
-    
     }
 
     public Iterator<Question> getIterator() {
