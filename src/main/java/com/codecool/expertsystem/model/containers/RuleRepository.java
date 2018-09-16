@@ -10,7 +10,7 @@ public class RuleRepository {
 
     public RuleRepository() {
         this.questions = new ArrayList<>();
-        this.questionIterator = getIterator();
+        this.questionIterator = new QuestionIterator();
     }
 
     public void addQuestion(Question question) {
@@ -36,7 +36,7 @@ public class RuleRepository {
     }
 
     public Iterator<Question> getIterator() {
-        return new QuestionIterator();
+        return this.questionIterator;
     }
 
 }
