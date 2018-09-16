@@ -9,7 +9,6 @@ public class Question {
         this.id = id;
         this.question = question;
         this.answer = answer;
-
     }
 
     public String getId() {
