@@ -18,15 +18,20 @@ public class RuleRepository {
     }    
 
     private class QuestionIterator implements Iterator<Question> {
+        int index;
 
         @Override
         public boolean hasNext() {
-    
+            return index < questions.size();
         }
     
         @Override
-        public Fact next() {
-    
+        public Question next() {
+            if (this.hasNext()) {
+                return questions.get(index++)
+            } else {
+                return null;
+            }
         }
     
     }
@@ -34,5 +39,5 @@ public class RuleRepository {
     public Iterator<Question> getIterator() {
         return new QuestionIterator();
     }
-    
+
 }
