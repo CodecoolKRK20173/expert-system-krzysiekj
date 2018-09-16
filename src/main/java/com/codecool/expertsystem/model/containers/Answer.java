@@ -16,12 +16,12 @@ public class Answer {
     }
 
     public boolean evaluateAnswerByInput(String input) throws InputMismatchException {
-        boolean evaluation = false;
 
         for (Value value : this.answers) {
             if (value.getInputPattern().contains(input)) {
-                evaluation = value.getSelectionType();
-            } 
+                return value.getSelectionType();
+            }
+        }
         throw new InputMismatchException();
 
     }   
