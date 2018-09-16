@@ -11,9 +11,9 @@ public class FactParser extends XMLParser {
     private NodeList nodeList;
 
     public FactParser(String xmlPath) {
+        loadXmlDocument(xmlPath);
         this.factRepository = new FactRepository();
-        this.nodeList = document.getElementsByTagName("Fact");
-        loadXmlDocument(xmlPath);        
+        this.nodeList = document.getElementsByTagName("Fact");                
         addFactsToRepository();
     }
 

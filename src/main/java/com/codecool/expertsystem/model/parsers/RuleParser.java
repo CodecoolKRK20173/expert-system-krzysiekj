@@ -18,9 +18,9 @@ public class RuleParser extends XMLParser {
     private NodeList nodeList;
 
     public RuleParser(String xmlPath) {
-        this.ruleRepository = new RuleRepository();
-        this.nodeList = document.getElementsByTagName("Rule");
         loadXmlDocument(xmlPath);
+        this.ruleRepository = new RuleRepository();
+        this.nodeList = document.getElementsByTagName("Rule");        
         addRulesToRepository();
     }
 

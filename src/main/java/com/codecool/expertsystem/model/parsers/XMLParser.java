@@ -19,8 +19,7 @@ abstract class XMLParser {
             this.document.getDocumentElement().normalize();
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        
+        }        
     }
 
     Document getDocument() {
