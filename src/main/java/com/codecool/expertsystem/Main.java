@@ -8,8 +8,11 @@ import com.codecool.expertsystem.view.View;
 public class Main {
 
     public static void main(String[] args) {
+        final String RULESLINK = "/resources/Rules.xml";
+        final String FACTSLINK = "/resources/Facts.xml";
         View view = new View();
-        ESProvider esProvider = new ESProvider(factParser, ruleParser);
+        ESProvider esProvider = new ESProvider(
+            new FactParser(FACTSLINK), new RuleParser(RULESLINK));
 
         view.printWelcome();
         

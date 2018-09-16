@@ -8,7 +8,7 @@ import javax.xml.parsers.DocumentBuilder;
 import org.w3c.dom.Document;
 
 abstract class XMLParser {
-    private Document document;
+    protected Document document;
 
     void loadXmlDocument(String xmlPath) {
         try {
@@ -16,6 +16,7 @@ abstract class XMLParser {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             this.document = dBuilder.parse(xmlFile);
+            this.document.getDocumentElement().normalize();
         } catch (Exception e) {
             e.printStackTrace();
         }
