@@ -4,9 +4,14 @@
 # Log file
 *.log
 
-# Package Files #
+# Package Files
 *.jar
 
 # Maven
 log/
 target/
+
+# Other
+.classpath
+.project
+.settings/
