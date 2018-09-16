@@ -3,6 +3,7 @@ package com.codecool.expertsystem.controller;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Scanner;
 
 import com.codecool.expertsystem.model.containers.FactRepository;
 import com.codecool.expertsystem.model.containers.Question;
@@ -32,18 +33,38 @@ public class ESProvider {
             String questionId = question.getId();
 
             view.printQuestion(question.getQuestion());
-            boolean userAnswer = getAnswerByQuestion(questionId);
+            boolean userAnswer = getAnswerByQuestion(question, questionId);
 
             this.userSelection.put(questionId, userAnswer);
         }
     }
 
-    public boolean getAnswerByQuestion(String questionId) {
+    public boolean getAnswerByQuestion(Question question, String questionId) {
+        boolean answer = false;      
+        boolean isAnswerCorrect = false;
 
+        while (!isAnswerCorrect) {
+            String userInput = getUserInput();
+            answer = question.getEvaluatedAnswer(userInput);
+            if (answer) {
+                isAnswerCorrect = true;
+            } else {
+                view.enterAnotherAnswer();
+            }
+        }
+        return answer;
     }
 
     public String evaluate() {
 
+    }
+
+    private String getUserInput() {
+        String userInput;
+        Scanner scanner = new Scanner(System.in);
+        userInput = scanner.nextLine().toLowerCase();
+        scanner.close();
+        return userInput;
     }
     
 }

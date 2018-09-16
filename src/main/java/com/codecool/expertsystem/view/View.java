@@ -16,4 +16,8 @@ public class View {
         System.out.println(question + "?\n");
     }
 
+    public void enterAnotherAnswer() {
+        System.out.println("Enter another answer!");
+    }
+
 }
