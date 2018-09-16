@@ -1,20 +1,20 @@
 package com.codecool.expertsystem.model.containers;
 
 import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 
 public class RuleRepository {
     private Iterator<Question> questionIterator;
-    private Map<Question, String> questions;
+    private List<Question> questions;
 
     public RuleRepository() {
-        this.questions = new LinkedHashMap<>();
+        this.questions = new ArrayList<>();
         this.questionIterator = getIterator();
     }
 
     public void addQuestion(Question question) {
-
+        this.questions.add(question);
     }    
 
     private class QuestionIterator implements Iterator<Question> {
