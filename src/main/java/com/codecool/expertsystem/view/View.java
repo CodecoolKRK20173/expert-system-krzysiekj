@@ -12,4 +12,8 @@ public class View {
         System.out.println("If I can suggest i'd make this trail: " + result);
     }
 
+    public void printQuestion(String question) {
+        System.out.println(question + "?\n");
+    }
+
 }
