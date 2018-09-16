@@ -3,9 +3,11 @@ package com.codecool.expertsystem.controller;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 import java.util.Scanner;
 
 import com.codecool.expertsystem.model.containers.FactRepository;
+import com.codecool.expertsystem.model.containers.Fact;
 import com.codecool.expertsystem.model.containers.Question;
 import com.codecool.expertsystem.model.containers.RuleRepository;
 import com.codecool.expertsystem.model.parsers.FactParser;
@@ -55,10 +57,6 @@ public class ESProvider {
         return answer;
     }
 
-    public String evaluate() {
-
-    }
-
     private String getUserInput() {
         String userInput;
         Scanner scanner = new Scanner(System.in);
@@ -66,5 +64,30 @@ public class ESProvider {
         scanner.close();
         return userInput;
     }
-    
+
+    public String evaluate() {
+        String evaluation = "";
+        Iterator<Fact> factIterator = this.factRepository.getIterator();
+
+        while (factIterator.hasNext()) {
+            Fact fact = factIterator.next();
+
+            if (checkMatch(fact)) {
+                evaluation = fact.getDescription();
+            }
+        }
+        return evaluation;
+    }
+
+    private boolean checkMatch(Fact fact) {
+        Set<String> factSet = fact.getIdSet();
+
+        for (String id : factSet) {
+            if (fact.getValueById(id) == this.userSelection.get(id)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
