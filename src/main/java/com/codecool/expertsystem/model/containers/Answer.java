@@ -1,6 +1,7 @@
 package com.codecool.expertsystem.model.containers;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 
 public class Answer {
@@ -14,17 +15,14 @@ public class Answer {
         this.answers.add(value);        
     }
 
-    public boolean evaluateAnswerByInput(String input) {
+    public boolean evaluateAnswerByInput(String input) throws InputMismatchException {
         boolean evaluation = false;
 
         for (Value value : this.answers) {
             if (value.getInputPattern().contains(input)) {
                 evaluation = value.getSelectionType();
-            } else {
-                evaluation = false;
-            }
-        }
-        return evaluation;
+            } 
+        throw new InputMismatchException();
 
     }   
     
