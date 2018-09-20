@@ -1,7 +1,7 @@
 package com.codecool.expertsystem.controller;
 
-import java.util.HashMap;
 import java.util.Iterator;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.Scanner;
@@ -18,6 +18,7 @@ public class ESProvider {
     private RuleRepository ruleRepository;
     private FactRepository factRepository;
     private Map<String, Boolean> userSelection;
+    private Fact fact;
     View view;
 
     public ESProvider(FactParser factParser, RuleParser ruleParser) {
@@ -26,68 +27,57 @@ public class ESProvider {
         view = new View();
     }
 
-    public void collectAnswers() {
+    public void collectAnswers() {        
         userSelection = new HashMap<>();
         Iterator<Question> questionIterator = this.ruleRepository.getIterator();
+        Scanner scanner = new Scanner(System.in);
         
         while (questionIterator.hasNext()) {
             Question question = questionIterator.next();
             String questionId = question.getId();
-
             view.printQuestion(question.getQuestion());
-            boolean userAnswer = getAnswerByQuestion(question, questionId);
+            boolean userAnswer = getAnswerByQuestion(question, questionId, scanner);
 
             this.userSelection.put(questionId, userAnswer);
         }
-    }
-
-    public boolean getAnswerByQuestion(Question question, String questionId) {
-        boolean answer = false;      
-        boolean isAnswerCorrect = false;
-
-        while (!isAnswerCorrect) {
-            String userInput = getUserInput();
-            answer = question.getEvaluatedAnswer(userInput);
-            if (answer) {
-                isAnswerCorrect = true;
-            } else {
-                view.enterAnotherAnswer();
-            }
-        }
-        return answer;
-    }
-
-    private String getUserInput() {
-        String userInput;
-        Scanner scanner = new Scanner(System.in);
-        userInput = scanner.nextLine().toLowerCase();
         scanner.close();
-        return userInput;
     }
 
+    public boolean getAnswerByQuestion(Question question, String questionId, Scanner scanner) {
+        String userInput = getUserInput(scanner);
+        return question.getEvaluatedAnswer(userInput);
+    }
+    
     public String evaluate() {
         String evaluation = "";
         Iterator<Fact> factIterator = this.factRepository.getIterator();
 
         while (factIterator.hasNext()) {
-            Fact fact = factIterator.next();
-
-            if (checkMatch(fact)) {
-                evaluation = fact.getDescription();
+            this.fact = factIterator.next();
+            System.out.println(fact);
+            if (!checkMatch(this.fact.getIdSet())) {
+                continue;
             }
+            evaluation = this.fact.getDescription();
         }
         return evaluation;
     }
 
-    private boolean checkMatch(Fact fact) {
-        Set<String> factSet = fact.getIdSet();
+    private boolean checkMatch(Set<String> factSet) {     
 
         for (String id : factSet) {
-            if (fact.getValueById(id) == this.userSelection.get(id)) {
+            System.out.println(id);
+            if (this.fact.getValueById(id) == this.userSelection.get(id)) {
                 return true;
             }
         }
         return false;
+    }
+
+    private String getUserInput(Scanner scanner) {
+        String userInput;        
+        userInput = scanner.next().toLowerCase();       
+        return userInput;
     }
 
 }

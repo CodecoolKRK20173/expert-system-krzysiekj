@@ -19,8 +19,8 @@ public class Main {
         String result = esProvider.evaluate();
 
         if (result.equals("")) {
-            result = "Answer couldn't be found by the expert system"
-                    + "maybe it needs more rules, or facts";
+            result = "Answer couldn't be found by the expert system,"
+                    + " maybe it needs more rules, or facts";
         }
         view.printResult(result);
     }

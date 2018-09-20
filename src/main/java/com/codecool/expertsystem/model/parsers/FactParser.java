@@ -24,20 +24,18 @@ public class FactParser extends XMLParser {
     private void addFactsToRepository() {
 
         for (int count = 0; count < nodeList.getLength(); count++) {
-            Node tempNode = nodeList.item(count);
+            Node tempNode = nodeList.item(count);            
+            Element tempElement = (Element) tempNode;
 
-            if (tempNode.getNodeType() == Node.ELEMENT_NODE) {
-                Element tempElement = (Element) tempNode;
+            String id = tempElement.getAttribute("id");
+            String description = tempElement.getElementsByTagName("Description")
+                                                .item(0).getTextContent();
 
-                String id = tempElement.getAttribute("id");
-                String description = tempElement.getElementsByTagName("Description")
-                                                    .item(0).getTextContent();
-
-                Fact fact = new Fact(id, description);
-                setFactEvaluations(fact, tempElement);
-                
-                this.factRepository.addFact(fact);
-            }
+            Fact fact = new Fact(id, description);
+            setFactEvaluations(fact, tempElement);
+            
+            this.factRepository.addFact(fact);
+    
         }
     }
 
@@ -46,13 +44,12 @@ public class FactParser extends XMLParser {
                                                       .item(0);
         NodeList evaluations = evaluationNode.getElementsByTagName("Eval");
 
-        for (int count = 0; count < evaluations.getLength(); count++) {
-
-            Element evaluation = (Element) evaluations.item(count);
+        for (int count = 0; count < evaluations.getLength(); count++) {            
+            Element evaluation = (Element) evaluations.item(count);            
             String id = evaluation.getAttribute("id");
             String value = evaluation.getTextContent();
             fact.setFactValueById(id, Boolean.valueOf(value));
-        }
+        }        
     }
 
 }

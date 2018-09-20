@@ -57,7 +57,6 @@ public class RuleParser extends XMLParser {
             if (answerNode.getNodeType() == Node.ELEMENT_NODE) {
                 Element answerElement = (Element) answerNode;
                 Element valueNode = (Element) answerNode.getChildNodes().item(1);
-
                 boolean answerType = Boolean.valueOf(answerElement.getAttribute("value"));                
                 Value value;
                 
@@ -73,5 +72,5 @@ public class RuleParser extends XMLParser {
         }
         return answer;
     }
-    
+
 }

@@ -13,7 +13,7 @@ public class View {
     }
 
     public void printQuestion(String question) {
-        System.out.println(question + "?\n");
+        System.out.println(question + "?");
     }
 
     public void enterAnotherAnswer() {

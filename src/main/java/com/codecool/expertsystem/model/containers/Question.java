@@ -1,5 +1,7 @@
 package com.codecool.expertsystem.model.containers;
 
+import java.util.InputMismatchException;
+
 public class Question {
     private String id;
     private String question;
@@ -24,6 +26,12 @@ public class Question {
     }
 
     public boolean getEvaluatedAnswer(String input) {
-        return this.answer.evaluateAnswerByInput(input);
+        boolean evaluation = false;
+        try {
+            evaluation = this.answer.evaluateAnswerByInput(input);
+        } catch(InputMismatchException e) {
+            e.printStackTrace();
+        }
+        return evaluation;
     }
 }

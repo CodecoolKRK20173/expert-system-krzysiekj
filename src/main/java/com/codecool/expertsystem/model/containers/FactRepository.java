@@ -36,6 +36,6 @@ public class FactRepository {
     }
 
     public Iterator<Fact> getIterator() {
-        return  this.factIterator;
+        return this.factIterator;
     }
 }

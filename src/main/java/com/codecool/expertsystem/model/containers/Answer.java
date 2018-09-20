@@ -18,7 +18,7 @@ public class Answer {
     public boolean evaluateAnswerByInput(String input) throws InputMismatchException {
 
         for (Value value : this.answers) {
-            if (value.getInputPattern().contains(input)) {
+            if (value.getInputPattern().contains(input)) {   
                 return value.getSelectionType();
             }
         }

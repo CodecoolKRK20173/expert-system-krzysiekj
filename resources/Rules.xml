@@ -15,7 +15,7 @@
         <Question>What is the time of the year?</Question>
         <Answer>
             <Selection value="true">
-                <MultipleValue value="spring, summer, autumn"/>
+                <MultipleValue value="spring,summer,autumn"/>
             </Selection>
             <Selection value="false">
                 <SingleValue value="winter"/>
@@ -59,7 +59,7 @@
         <Question>Do you prefer this trip to be cheaper or more expensive?</Question>
         <Answer>
             <Selection value="true">
-                <SingleValue value="cheaper"/>
+                <MultipleValue value="cheap,cheaper"/>
             </Selection>
             <Selection value="false">
                 <MultipleValue value="expensive,more expensive"/>
